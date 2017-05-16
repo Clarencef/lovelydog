@@ -8,7 +8,8 @@
 * Vuex
 * Vue Resource
 * Sass
-* normalize.css
+* Normalize.css
+* Font-awesome
 
 * * *
 
