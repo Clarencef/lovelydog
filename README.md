@@ -2,6 +2,7 @@
 
 > basic setup
 
+## Node version: 7.7.0
 ## Included
 
 * Vuex
