@@ -2,6 +2,15 @@
 
 > basic setup
 
+## Included
+
+* Vuex
+* Vue Resource
+* Sass
+* normalize.css
+
+* * *
+
 ## Build Setup
 
 ``` bash
