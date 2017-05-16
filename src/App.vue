@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <!--<img src="./assets/logo.png">-->
+    <Header />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import Header from './components/Header';
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    Header,
+  }
 }
 </script>
 
-<style>
+<style lang="scss">
 @import "~normalize.css/normalize.css";
 @import './assets/style/main.scss';
 #app {
@@ -19,7 +23,5 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

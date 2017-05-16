@@ -1,0 +1,120 @@
+:root {
+  --layout-grid-gutter: 16px;
+}
+$grid-breakpoints: ( desktop: 840px, tablet: 480px, phone: 0, ) !default;
+$layout-grid-columns: ( desktop: 12, tablet: 8, phone: 4) !default;
+$layout-grid-default-margin: 16px !default;
+$layout-grid-default-gutter: 16px !default;
+
+@mixin layout-grid-media-query_($size) {
+  @if $size==phone {
+    // Phone
+    @media (max-width: map-get($grid-breakpoints, tablet) - 1px) {
+      @content;
+    }
+  }
+  @if $size==tablet {
+    // Tablet
+    @media (min-width: map-get($grid-breakpoints, tablet)) and (max-width: map-get($grid-breakpoints, desktop) - 1px) {
+      @content;
+    }
+  }
+  @if $size==desktop {
+    // Desktop
+    @media (min-width: map-get($grid-breakpoints, desktop)) {
+      @content;
+    }
+  }
+}
+
+// Public mixins, meant for developer usage.
+@mixin layout-grid($margin, $gutter, $max-width: null) {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: $margin - $gutter / 2;
+  padding: calc(var(--layout-grid-margin, #{$margin}) - var(--layout-grid-gutter, #{$gutter}) / 2);
+  @if $max-width {
+    max-width: $max-width;
+  }
+}
+
+@mixin layout-grid-cell($gutter, $span: 4) {
+  // desktop default 3/12 33.3%
+  // tablet default 4/8 50%
+  // phone default 4/4 100%
+  margin: $gutter / 2;
+  margin: calc(var(--layout-grid-gutter, #{$gutter}) / 2);
+  box-sizing: border-box;
+  @include layout-grid-cell-spans_($span, $gutter);
+}
+
+@mixin layout-grid-cell-spans_($span, $gutter) {
+  @each $size in map-keys($layout-grid-columns) {
+    @include layout-grid-media-query_($size) {
+      @include layout-grid-cell-span_($size, $span, $gutter);
+    }
+  }
+}
+
+@mixin layout-grid-cell-span_($size, $span, $gutter) {
+  $percent: percentage($span / map-get($layout-grid-columns, $size));
+  @if $percent>100% {
+    $percent: 100%;
+  }
+  width: calc(#{$percent} - #{$gutter});
+  width: calc(#{$percent} - var(--layout-grid-gutter, #{$gutter}));
+}
+
+.layout-grid {
+  @include layout-grid($layout-grid-default-margin, $layout-grid-default-gutter);
+}
+
+.layout-grid__cell {
+  @include layout-grid-cell($layout-grid-default-gutter);
+  @each $size in map-keys($layout-grid-columns) {
+    @include layout-grid-media-query_($size) {
+      @for $span from 1 through map-get($layout-grid-columns, desktop) {
+        // Span classes.
+        // stylelint-disable max-nesting-depth
+        @at-root .layout-grid__cell--span-#{$span},
+        .layout-grid__cell--span-#{$span}-#{$size}.layout-grid__cell--span-#{$span}-#{$size} {
+          @include layout-grid-cell-span_($size, $span, $layout-grid-default-gutter);
+        } // stylelint-enable max-nesting-depth
+      }
+    }
+  }
+  @mixin layout-grid-cell-order($order) {
+    order: $order;
+  }
+  @mixin layout-grid-cell-align($position) {
+    @if $position=="top" {
+      align-self: flex-start;
+    }
+    @if $position=="middle" {
+      align-self: center;
+    }
+    @if $position=="bottom" {
+      align-self: flex-end;
+    }
+    @if $position=="stretch" {
+      align-self: stretch;
+    }
+  } // Order override classes.
+  @for $i from 1 through map-get($layout-grid-columns, desktop) {
+    &--order-#{$i} {
+      @include layout-grid-cell-order($i);
+    }
+  } // Alignment classes.
+  &--align-top {
+    @include layout-grid-cell-align(top);
+  }
+  &--align-middle {
+    @include layout-grid-cell-align(middle);
+  }
+  &--align-bottom {
+    @include layout-grid-cell-align(bottom);
+  }
+}

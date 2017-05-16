@@ -1,4 +1,4 @@
-# vue-basic-set
+# lovelyDog
 
 > basic setup
 
