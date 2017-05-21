@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'header',
+  name: 'site-header',
 }
 </script>
 

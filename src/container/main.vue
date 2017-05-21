@@ -4,20 +4,20 @@
     <section class="main-info layout-grid__cell--span-12">
       <Card v-for="item in cardInfo" :key="item.id" :data="item"/>
     </section>
-    <Article />
+    <SiteArticle />
   </div>
 </template>
 
 <script>
 import Carousel from '../components/Carousel';
 import Card from '../components/Card';
-import Article from '../components/article';
+import SiteArticle from '../components/SiteArticle';
 export default {
   name: 'main',
   components: {
     Carousel,
     Card,
-    Article,
+    SiteArticle,
   },
   data () {
     return {
