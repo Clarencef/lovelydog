@@ -42,6 +42,13 @@ export default {
         subTitle: 'subTitle3',
         img: 'dog6',
         description: 'When the Wicked Witch looked out again and saw all her crows lying in a heap, she got into a terrible rage, and blew three times upon her silver whistle.',
+      },{
+        id: 4,
+        avatar: 'avatar',
+        title: 'Title4',
+        subTitle: 'subTitle4',
+        img: 'dog6',
+        description: 'When the Wicked Witch looked out again and saw all her crows lying in a heap, she got into a terrible rage, and blew three times upon her silver whistle.',
       }]
     }
   },
@@ -62,5 +69,6 @@ export default {
     justify-content: center;
     direction: row;
     margin: 0 auto;
+    flex-wrap: wrap;
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="card layout-grid__cell layout-grid__cell--span-4">
+  <div class="card layout-grid__cell layout-grid__cell--span-3 layout-grid__cell--span-12-phone layout-grid__cell--span-4-tablet">
     <div class="card-avatar">
       <img :src="getPic(data.avatar)"/>
     </div>

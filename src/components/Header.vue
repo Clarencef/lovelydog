@@ -1,14 +1,21 @@
 <template>
   <header class="header layout-grid">
     <div class="logo layout-grid__cell--align-middle">
-      <img class="logo-img" src="../assets/images/bulldog.svg"/>
+      <router-link to="/">
+        <img class="logo-img" src="../assets/images/bulldog.svg"/>
+      </router-link>
     </div>
     <nav class="site-menu header-top-left layout-grid__cell--align-middle">
       <ul>
-        <li class="header-top-item">花蓮</li>
-        <li class="header-top-item">台北</li>
-        <li class="header-top-item">台東</li>
-        <li class="header-top-item">高雄</li>
+        <li class="header-top-item">
+          <router-link to="/about">About Us</router-link>
+        </li>
+        <li class="header-top-item">
+          <router-link to="/blog">Blog</router-link>
+        </li>
+        <li class="header-top-item">
+          <router-link to="/location">Location</router-link>
+        </li>
       </ul>
     </nav>
   </header>
@@ -32,6 +39,10 @@ header {
   height: 48px;
   background: $white;
   color: $black;
+  a {
+    text-decoration: none;
+    color: $black;
+  }
 }
 .logo{
   @include box(36px);
