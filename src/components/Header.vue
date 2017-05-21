@@ -3,8 +3,14 @@
     <div class="logo layout-grid__cell--align-middle">
       <img class="logo-img" src="../assets/images/bulldog.svg"/>
     </div>
-
-    this is header block
+    <nav class="site-menu header-top-left layout-grid__cell--align-middle">
+      <ul>
+        <li class="header-top-item">花蓮</li>
+        <li class="header-top-item">台北</li>
+        <li class="header-top-item">台東</li>
+        <li class="header-top-item">高雄</li>
+      </ul>
+    </nav>
   </header>
 </template>
 
@@ -22,7 +28,7 @@ header {
   --layout-grid-margin: 24px;
   position: relative;
   @extend .z-depth-1;
-  z-index: 1;
+  z-index: 2;
   height: 48px;
   background: $white;
   color: $black;
@@ -32,5 +38,12 @@ header {
 }
 .logo-img {
   max-width: 100%;
+}
+.site-menu {
+  li {
+    list-style: none;
+    display: inline-block;
+    margin: 15px;
+  }
 }
 </style>
