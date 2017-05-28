@@ -13,9 +13,9 @@
         <span class="select-label">Size</span>
         <span class="caret"></span>
         <select v-on:change="handleSizeSelect" class="select">
-          <option>Small</option>
-          <option>Medium</option>
-          <option>Large</option>
+          <option>大型犬</option>
+          <option>中型犬</option>
+          <option>小型犬</option>
         </select>
       </div>
       <div class="select-wrapper">
@@ -23,8 +23,10 @@
         <span class="caret"></span>
         <select v-on:change="handleColorSelect" class="select">
           <option>黑色</option>
+          <option>花色偏淺色</option>
+          <option>花色偏深色</option>
+          <option>土黃色</option>
           <option>白色</option>
-          <option>你想不到的顏色</option>
         </select>
       </div>
       <QuillEditor/>
@@ -63,6 +65,7 @@ export default {
 .editor-form {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .select-wrapper {

@@ -11,6 +11,7 @@
 * Normalize.css
 * Font-awesome
 * vue-awesome-swiper
+* quill
 
 * * *
 
